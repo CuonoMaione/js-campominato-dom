@@ -21,7 +21,11 @@ let click = false;
             
             click = true;
 
+             const Bomblist = randomNumbers(100 , 1 , 16);
+            console.log(Bomblist)
+
             for (let i = 1; i < 101; i++) {
+            
             let cellElement = document.createElement("div");
         
             cellElement.classList.add("cell")
@@ -32,19 +36,24 @@ let click = false;
 
             gridElement.classList.add("grid")
 
-        
-            cellElement.addEventListener("click" , function (){
             
-                cellElement.classList.toggle("active")
-                console.log(i)
-            })       
+        
+            cellElement.addEventListener("click" , function(){
 
-            if (randomNumbers(100 , 1 , 7).includes(i)) {
-                cellElement.classList.add("red")
-                
+                if ( Bomblist.includes(i)) {
+                    cellElement.classList.add("red")
+                    game = true;
+                } else {
+    
+                    cellElement.classList.toggle("active")
+                    console.log(i)
+    
+                }    
+
+            })    
+
             }
-
-        }
+            
         }else{
             click = false;
             gridElement.innerHTML = ""
